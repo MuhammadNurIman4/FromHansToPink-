@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>from Hans to Pink^^</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.4/dist/sweetalert2.all.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: #ffebf0;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .ctnr {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff5f8;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            border: 3px solid #ffaad4;
+        }
+        .lv img {
+            width: 100px;
+        }
+        .lv p {
+            font-size: 24px;
+            color: #ff69b4;
+        }
+        .ctn {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #ff6fb7;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #ff4f99;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .content img, .content video {
+            max-width: 80%;
+            height: auto;
+            border-radius: 12px;
+            border: 2px solid #ffaad4;
+        }
+        .content p {
+            font-size: 20px;
+            color: #ff69b4;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let konten = [
+                { gambar: "stiker1.gif", ucapan: "Halloo Honeyy" },
+                { gambar: "stiker2.gif", ucapan: "I made this for uu" },
+                { gambar: "stiker3.gif", ucapan: "Fightingg honeyyy,I will always be with you" },
+                { gambar: "stiker5.gif", ucapan: "I hope this gives you energyy" },
+                { gambar: "stiker6.gif", ucapan: "I give you energy with thiss" },
+                { gambar: "stiker4.gif", ucapan: "I love u honeyyyy" },
+                { ucapan: "fightinggg my honeyy,I will wait for uu, I love youu honey ^^" },
+                { ucapan: "เค้ารักเธอ ^^ - from mee, Hans" },
+                { video: "video.mp4", ucapan: "its my honeyyy ^^" }
+            ];
+
+            let currentIndex = 0;
+            const contentDiv = document.querySelector('.content');
+            const nextButton = document.querySelector('.next');
+
+            function updateContent(index) {
+                const item = konten[index];
+                if (item.gambar) {
+                    contentDiv.innerHTML = `<img src="${item.gambar}" alt="Stiker" />`;
+                } else if (item.video) {
+                    contentDiv.innerHTML = `<video controls autoplay>
+                                                <source src="${item.video}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>`;
+                } else {
+                    contentDiv.innerHTML = '';
+                }
+                contentDiv.innerHTML += `<p>${item.ucapan}</p>`;
+            }
+
+            nextButton.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % konten.length;
+                updateContent(currentIndex);
+            });
+
+            updateContent(currentIndex);
+        });
+    </script>
+</head>
+<body>
+    <div class="ctnr">
+        <div class="lv">
+            <img src="stiker7.gif" alt="Love" />
+            <p>Halloo my Honey^^</p>
+        </div>
+        <div class="content"></div>
+        <div class="ctn">
+            <button class="btn next">Next</button>
+        </div>
+        <audio id="bg-music" src="musik.mp3" autoplay loop></audio>
+    </div>
+</body>
+</html>
